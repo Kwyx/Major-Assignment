@@ -1,0 +1,64 @@
+Check command line for arguments
+  if none, go to interactive mode
+  if one, go to batch mode
+    check that file exists/readable
+  if 2 or more, error
+  if -h print simple help
+
+Multi-threading
+  for each command on an input line
+    fork child process to execute that command
+  parent "wait" for all children to finish
+
+Signal handling
+  CTRL D - quit after all concurrent commands finish
+
+Parse input line (from batch file or command line)
+  remove extra spaces
+  handle blank lines (ignore?)
+  error check input
+    command exists/executable
+    <= 512 characters
+    errors sent to stderr
+  call each command with fork/exec
+  
+Handle internal commands
+  exit - "wait" for all concurrent commands to finish
+  cd - "chdir"
+
+Batch Mode
+  open file for reading
+  echo each command before executing
+  exit when quit, CTRL D, or EOF found
+  close file
+
+Comments
+  README file
+    names
+    design overview
+    complete specification
+    known bugs/problems
+  Header section
+  Function descriptions
+  Code block descriptions
+  Variable declarations
+
+Makefile
+  compile
+  clean
+
+Testing
+  create numerous batch files with sample input
+
+Bonus functionality
+  PATH
+  history
+  user customized prompt
+
+Questions
+  exit by calling system command "exit"?
+  handle KILL signals other than CTRL D?
+ 
+Resources
+  strace
+  bash man pages
